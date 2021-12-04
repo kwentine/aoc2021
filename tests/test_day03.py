@@ -1,4 +1,4 @@
-from day03 import parse, accumulate, gamma, part_two, filter_until_single
+from day03 import parse, accumulate, gamma_i, part_two, filter_until_single
 
 
 def test_parse():
@@ -13,8 +13,8 @@ def test_accumulate():
 
 def test_gamma():
     numbers = [[0, 0, 1], [1, 1, 0], [1, 0 , 0]]
-    assert gamma(numbers, 0) == 1
-    assert gamma(numbers, 1) == 0
+    assert gamma_i(numbers, 0) == 1
+    assert gamma_i(numbers, 1) == 0
 
 def test_filter_until_single():
     data = """00100
@@ -30,7 +30,7 @@ def test_filter_until_single():
 00010
 01010"""
     numbers = parse(data)
-    assert filter_until_single(numbers, gamma) == 23
+    assert filter_until_single(numbers, gamma_i) == 23
 
 def test_part_two():
     data = """00100
@@ -47,3 +47,4 @@ def test_part_two():
 01010"""
     numbers = parse(data)
     assert part_two(numbers) == 230
+
