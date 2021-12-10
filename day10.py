@@ -1,5 +1,5 @@
 from utils import read_input
-from collections import deque
+
 
 DAY = 10
 
