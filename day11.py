@@ -1,7 +1,8 @@
 import math
-from utils import read_input
 from collections import defaultdict
 from itertools import product
+
+from utils import read_input
 
 DAY = 11
 
@@ -41,7 +42,7 @@ def step(grid):
         flash_count += 1
     return flash_count
 
-        
+
 def part_one(grid):
     return sum(step(grid) for _ in range(100))
 
@@ -54,8 +55,8 @@ def part_two(grid):
         step_count += 1
         if flash_count == octopus_count:
             return step_count
-        
-    
+
+
 if __name__ == "__main__":
     data = parse(read_input(day=DAY))
     print(part_two(data))
