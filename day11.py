@@ -1,7 +1,7 @@
 import math
 from collections import defaultdict
 from itertools import product
-
+from time import sleep
 from utils import read_input
 
 DAY = 11
@@ -43,20 +43,37 @@ def step(grid):
     return flash_count
 
 
+def display(grid, h, w):
+    print("\033[2J\033[1;1H")
+    img = [[' '] * w for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            if grid[(i, j)] == 0:
+                img[i][j] = "\033[33;1m\u25A0\033[0m"
+            else:
+                img[i][j] = "\033[34;1m\u25A0\033[0m"
+    print('\n'.join([''.join(l) for l in img]))
+
+
 def part_one(grid):
     return sum(step(grid) for _ in range(100))
 
 
 def part_two(grid):
+    h = max(i for (i, _) in grid) + 1
+    w = max(j for (_, j) in grid) + 1
     octopus_count = len(grid)
     step_count = 0
     while True:
         flash_count = step(grid)
         step_count += 1
+        display(grid, h, w)
+        print(f"Step: {step_count}")
         if flash_count == octopus_count:
             return step_count
+        sleep(0.1)
 
 
 if __name__ == "__main__":
     data = parse(read_input(day=DAY))
-    print(part_two(data))
+    part_two(data)
