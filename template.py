@@ -12,6 +12,5 @@ def part_two(data: str) -> int:
     pass
 
 if __name__ == "__main__":
-    if __name__ == "__main__":
     data = parse(read_input(day=DAY))
-    part_one(data)
+    print(part_one(data))
